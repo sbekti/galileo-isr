@@ -4,7 +4,7 @@
 // volatile uint32_t ticks = 0;
 
 NAN_METHOD(GetTime) {
-  info.GetReturnValue().Set(ticks);
+  info.GetReturnValue().Set(9);
 }
 
 NAN_METHOD(SetTime) {
