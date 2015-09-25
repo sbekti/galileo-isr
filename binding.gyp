@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "modulename",
-      "sources": [ "modulename.cpp" ]
+      "target_name": "addon",
+      "sources": [ "addon.cc" ]
     }
   ]
 }
