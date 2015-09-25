@@ -1,13 +1,13 @@
 #include <nan.h>
 #include "clock_isr.h"
 
-volatile uint32_t time = 0;
+volatile uint32_t clock = 0;
 
 NAN_METHOD(GetTime) {
-  info.GetReturnValue().Set(time);
+  info.GetReturnValue().Set(clock);
 }
 
 NAN_METHOD(SetTime) {
-  time = info[0]->Uint32Value();
-  info.GetReturnValue().Set(time);
+  clock = info[0]->Uint32Value();
+  info.GetReturnValue().Set(clock);
 }
