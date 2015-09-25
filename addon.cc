@@ -20,8 +20,8 @@ using Nan::Set;
 // Expose synchronous and asynchronous access to our
 // Estimate() function
 NAN_MODULE_INIT(InitAll) {
-  Set(target, New<String>("calculateSync").ToLocalChecked(),
-    GetFunction(New<FunctionTemplate>(CalculateSync)).ToLocalChecked());
+  Set(target, New<String>("getTime").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(GetTime)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, InitAll)
