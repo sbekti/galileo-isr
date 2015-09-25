@@ -17,7 +17,7 @@ function printResult(type, pi, ms) {
 	console.log()
 }
 
-function runSync () {
+function runSync() {
   var start = Date.now();
   // Estimate() will execute in the current thread,
   // the next line won't return until it is finished
@@ -25,4 +25,6 @@ function runSync () {
   printResult('Sync', result, Date.now() - start)
 }
 
-runSync()
+// runSync()
+
+module.exports = addon;
