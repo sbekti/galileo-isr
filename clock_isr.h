@@ -3,6 +3,7 @@
 
 #include <nan.h>
 
+NAN_METHOD(Init);
 NAN_METHOD(GetTime);
 NAN_METHOD(SetTime);
 

@@ -1,13 +1,31 @@
 #include <nan.h>
 #include "clock_isr.h"
+#include "mraa.h"
 
-uint32_t ticks = 0;
+static volatile uint32_t counter = 0;
+
+void interrupt(void* args) {
+  if (counter == UINT_MAX) {
+    counter = 0;
+  } else {
+    ++counter;
+  }
+}
+
+NAN_METHOD(Init) {
+  mraa_init();
+  mraa_gpio_context x;
+
+  x = mraa_gpio_init(2);
+  mraa_gpio_dir(x, MRAA_GPIO_IN);
+  mraa_gpio_isr(x, 2, &interrupt, NULL);
+}
 
 NAN_METHOD(GetTime) {
-  info.GetReturnValue().Set(ticks);
+  info.GetReturnValue().Set(counter);
 }
 
 NAN_METHOD(SetTime) {
-  ticks = info[0]->Uint32Value();
-  info.GetReturnValue().Set(ticks);
+  counter = info[0]->Uint32Value();
+  info.GetReturnValue().Set(counter);
 }

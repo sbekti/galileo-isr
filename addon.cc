@@ -10,6 +10,9 @@ using Nan::New;
 using Nan::Set;
 
 NAN_MODULE_INIT(InitAll) {
+  Set(target, New<String>("init").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(Init)).ToLocalChecked());
+
   Set(target, New<String>("getTime").ToLocalChecked(),
     GetFunction(New<FunctionTemplate>(GetTime)).ToLocalChecked());
 
