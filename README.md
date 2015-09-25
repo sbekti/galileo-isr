@@ -1,5 +1,1 @@
-To compile, run
-
-```
-npm build .
-```
+In this directory run `node-gyp rebuild` and then `node ./addon.js`

@@ -1,14 +1,11 @@
 {
-  "name": "function_arguments",
+  "name": "async_work",
   "version": "0.0.0",
-  "description": "Node.js Addons Example #2",
+  "description": "Node.js Addons Example #9",
   "main": "addon.js",
   "private": true,
+  "gypfile": true,
   "dependencies": {
-    "bindings": "~1.2.1"
-  },
-  "scripts": {
-    "test": "node addon.js"
-  },
-  "gypfile": true
+    "nan": "*"
+  }
 }

@@ -1,30 +1,27 @@
-#include <node.h>
+/*********************************************************************
+ * NAN - Native Abstractions for Node.js
+ *
+ * Copyright (c) 2015 NAN contributors
+ *
+ * MIT License <https://github.com/nodejs/nan/blob/master/LICENSE.md>
+ ********************************************************************/
 
-using namespace v8;
+#include <nan.h>
+#include "sync.h"   // NOLINT(build/include)
 
-Handle<Value> Add(const Arguments& args) {
-  HandleScope scope;
+using v8::FunctionTemplate;
+using v8::Handle;
+using v8::Object;
+using v8::String;
+using Nan::GetFunction;
+using Nan::New;
+using Nan::Set;
 
-  if (args.Length() < 2) {
-    ThrowException(Exception::TypeError(String::New("Wrong number of arguments")));
-    return scope.Close(Undefined());
-  }
-
-  if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
-    ThrowException(Exception::TypeError(String::New("Wrong arguments")));
-    return scope.Close(Undefined());
-  }
-
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-  Local<Number> num = Number::New(arg0 + arg1);
-
-  return scope.Close(num);
+// Expose synchronous and asynchronous access to our
+// Estimate() function
+NAN_MODULE_INIT(InitAll) {
+  Set(target, New<String>("calculateSync").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(CalculateSync)).ToLocalChecked());
 }
 
-void Init(Handle<Object> exports) {
-  exports->Set(String::NewSymbol("add"),
-      FunctionTemplate::New(Add)->GetFunction());
-}
-
-NODE_MODULE(addon, Init)
+NODE_MODULE(addon, InitAll)
