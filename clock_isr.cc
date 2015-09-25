@@ -1,6 +1,7 @@
 #include <nan.h>
 #include "clock_isr.h"
-#include "mraa.h"
+#include <mraa.h>
+#include <mraa/gpio.h>
 
 static volatile uint32_t counter = 0;
 
