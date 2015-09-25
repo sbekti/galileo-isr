@@ -6,7 +6,9 @@
         "addon.cc",
         "clock_isr.cc"
       ],
-      "cflags_cc!" : ["-lmraa"],
+      "libraries": [
+        "-lmraa"
+      ],
       "include_dirs": ["<!(node -e \"require('nan')\")"]
     }
   ]
