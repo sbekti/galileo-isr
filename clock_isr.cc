@@ -1,7 +1,7 @@
 #include <nan.h>
 #include "clock_isr.h"
 
-volatile uint32_t ticks = 0;
+// volatile uint32_t ticks = 0;
 
 NAN_METHOD(GetTime) {
   info.GetReturnValue().Set(ticks);
