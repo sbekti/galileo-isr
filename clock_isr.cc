@@ -8,6 +8,6 @@ NAN_METHOD(GetTime) {
 }
 
 NAN_METHOD(SetTime) {
-  ticks = info[0]->Uint32Value();
+  int ticks = info[0]->Uint32Value();
   info.GetReturnValue().Set(ticks);
 }
