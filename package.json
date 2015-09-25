@@ -1,7 +1,7 @@
 {
-  "name": "async_work",
+  "name": "clock-isr",
   "version": "0.0.0",
-  "description": "Node.js Addons Example #9",
+  "description": "Galileo Clock ISR",
   "main": "addon.js",
   "private": true,
   "gypfile": true,

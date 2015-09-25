@@ -4,7 +4,7 @@
       "target_name": "addon",
       "sources": [
         "addon.cc",
-        "sync.cc"
+        "clock_isr.cc"
       ],
       "include_dirs": ["<!(node -e \"require('nan')\")"]
     }
