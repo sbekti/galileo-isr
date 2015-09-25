@@ -4,6 +4,8 @@
 #include <mraa/gpio.h>
 
 static volatile uint32_t counter = 0;
+static volatile mraa_gpio_context y;
+static volatile uint8_t state = 0;
 
 void interrupt(void* args) {
   if (counter == UINT_MAX) {
@@ -11,6 +13,9 @@ void interrupt(void* args) {
   } else {
     ++counter;
   }
+
+  state = state == 0 ? 1 : 0;
+  mraa_gpio_write(y, state);
 }
 
 NAN_METHOD(Init) {
@@ -21,6 +26,9 @@ NAN_METHOD(Init) {
   mraa_gpio_dir(x, MRAA_GPIO_IN);
   gpio_edge_t edge = MRAA_GPIO_EDGE_RISING;
   mraa_gpio_isr(x, edge, &interrupt, NULL);
+
+  y = mraa_gpio_init(4);
+  mraa_gpio_dir(y, MRAA_GPIO_OUT);
 }
 
 NAN_METHOD(GetTime) {
