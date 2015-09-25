@@ -14,7 +14,7 @@ NAN_MODULE_INIT(InitAll) {
     GetFunction(New<FunctionTemplate>(GetTime)).ToLocalChecked());
 
   Set(target, New<String>("setTime").ToLocalChecked(),
-    GetFunction(New<FunctionTemplate>(GetTime)).ToLocalChecked());
+    GetFunction(New<FunctionTemplate>(SetTime)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, InitAll)
