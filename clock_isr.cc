@@ -24,9 +24,9 @@ NAN_METHOD(Init) {
 
   x = mraa_gpio_init(2);
   mraa_gpio_dir(x, MRAA_GPIO_IN);
-  //gpio_edge_t edge = MRAA_GPIO_EDGE_RISING;
-  //mraa_gpio_isr(x, edge, &interrupt, NULL);
-  mraa_gpio_isr(x, 2, &interrupt, NULL);
+  gpio_edge_t edge = MRAA_GPIO_EDGE_RISING;
+  mraa_gpio_isr(x, edge, &interrupt, NULL);
+  //mraa_gpio_isr(x, 2, &interrupt, NULL);
 
   y = mraa_gpio_init(4);
   mraa_gpio_dir(y, MRAA_GPIO_OUT);
